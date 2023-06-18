@@ -7,23 +7,19 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Email;
 
-@Entity
-@Table(name = "estudante")
-public class Estudante {
-
+@Table
+@Entity(name = "usuario")
+public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank
-	private String nome;
+	@Email
+	private String email;
 	
-	@NotBlank
-	@Size(min = 12, max = 12)
-	private String matricula;
+	private String senha;
 
 	public Long getId() {
 		return id;
@@ -33,24 +29,20 @@ public class Estudante {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getMatricula() {
-		return matricula;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
-	}
-
-	public boolean isNovu() {
-		return this.id == null;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	@Override
@@ -66,8 +58,7 @@ public class Estudante {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Estudante other = (Estudante) obj;
+		Usuario other = (Usuario) obj;
 		return Objects.equals(id, other.id);
 	}
-
 }
