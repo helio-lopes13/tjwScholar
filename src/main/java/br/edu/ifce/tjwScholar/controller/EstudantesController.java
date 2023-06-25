@@ -1,15 +1,19 @@
 package br.edu.ifce.tjwScholar.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.edu.ifce.tjwScholar.exception.EstudanteMatriculaJaCadastradaException;
+import br.edu.ifce.tjwScholar.exception.ImpossivelExcluirEntidadeException;
 import br.edu.ifce.tjwScholar.model.Estudante;
 import br.edu.ifce.tjwScholar.service.EstudanteService;
 import jakarta.validation.Valid;
@@ -52,5 +56,22 @@ public class EstudantesController {
 		ModelAndView mv = cadastrar(estudante);
 		mv.addObject(estudante);
 		return mv;
+	}
+	
+	@GetMapping
+	public ModelAndView pesquisar() {
+		ModelAndView mv = new ModelAndView("estudante/ListaEstudantes");
+		mv.addObject("estudantes", estudanteService.buscarTodos());
+		return mv;
+	}
+	
+	@DeleteMapping("/{estudante}")
+	public @ResponseBody ResponseEntity<?> excluir(Estudante estudante) {
+		try {
+			estudanteService.excluir(estudante);
+		} catch (ImpossivelExcluirEntidadeException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+		return ResponseEntity.ok().build();
 	}
 }

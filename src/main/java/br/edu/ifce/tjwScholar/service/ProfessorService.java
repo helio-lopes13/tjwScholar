@@ -8,14 +8,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.edu.ifce.tjwScholar.exception.EstudanteMatriculaJaCadastradaException;
+import br.edu.ifce.tjwScholar.exception.ImpossivelExcluirEntidadeException;
 import br.edu.ifce.tjwScholar.model.Professor;
 import br.edu.ifce.tjwScholar.repository.Professores;
+import jakarta.persistence.PersistenceException;
 
 @Service
 public class ProfessorService {
 	
 	@Autowired
 	private Professores professores;
+	
+	public List<Professor> buscarTodos() {
+		return professores.findAll();
+	}
 	
 	@Transactional
 	public Professor salvar(Professor professor) {
@@ -27,6 +33,16 @@ public class ProfessorService {
 		professor = professores.saveAndFlush(professor);
 		
 		return professor;
+	}
+	
+	@Transactional
+	public void excluir(Professor professor) {
+		try {
+			professores.delete(professor);
+			professores.flush();
+		} catch (PersistenceException exception) {
+			throw new ImpossivelExcluirEntidadeException("Não foi possível excluir este registro de professor!");
+		}
 	}
 	
 	public List<Professor> buscarPorNomeInicial(String nome) {

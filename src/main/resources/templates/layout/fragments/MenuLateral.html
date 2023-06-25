@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	xmlns:scholar="http://www.scholar.edu">
+	xmlns:scholar="http://www.scholar.edu.br">
 	
 	<body>
 		<aside class="aw-layout-sidebar  js-sidebar" th:fragment="layout-sidebar">
@@ -18,22 +18,22 @@
 						</li>
 						
 						<li class="aw-menu__item" scholar:menu="@{/estudante.*}">
-							<a th:href="@{/estudante/cadastrar}">
-								<i class="fa  fa-fw  fa-credit-card"></i>
+							<a th:href="@{/estudante}">
+								<i class="fa  fa-fw  fa-graduation-cap"></i>
 								<span>Estudantes</span>
 							</a>
 						</li>
 
 						<li class="aw-menu__item" scholar:menu="@{/professor.*}">
-							<a th:href="@{/professor/cadastrar}">
-								<i class="fa  fa-fw  fa-truck"></i>
+							<a th:href="@{/professor}">
+								<i class="fa  fa-fw  fa-laptop"></i>
 								<span>Professores</span>
 							</a>
 						</li>
 
 						<li class="aw-menu__item" scholar:menu="@{/turma.*}">
-							<a th:href="@{/turma/cadastrar}">
-								<i class="fa  fa-fw  fa-database"></i>
+							<a th:href="@{/turma}">
+								<i class="fa  fa-fw  fa-university"></i>
 								<span>Turmas</span>
 							</a>
 						</li>

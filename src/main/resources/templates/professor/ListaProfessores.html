@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:scholar="http://www.scholar.edu.br"
+	xmlns:data="http://www.thymeleaf.org/extras/data"
+	layout:decorate="~{layout/LayoutPadrao}">
+	
+	<head>
+		<title>Lista de Professores</title>
+	</head>
+	
+	<body>
+		<section layout:fragment="conteudo">
+			<div class="page-header">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-10">
+							<h1>Lista de Professores</h1>
+						</div>
+						
+						<div class="col-xs-2">
+							<div class="aw-page-header-controls">
+								<a class="btn  btn-default" th:href="@{/professor/cadastrar}">
+									<i class="glyphicon  glyphicon-plus-sign"></i> <span class="hidden-xs  hidden-sm">Novo professor</span>
+								</a>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="container-fluid">
+				<div class="table-responsive  sc-tabela-simples">
+					<table class="table  table-hover">
+						<thead>
+							<tr>
+								<th>Nome</th>
+								<th class="table-estudantes-col-tipo-pessoa">Matrícula</th>
+								<th class="table-col-acoes"></th>
+							</tr>
+						</thead>
+						
+						<tbody>
+							<tr th:each="professor : ${professores}">
+								<td th:text="${professor.nome}">Luísa Mell Oliveira Sales</td>
+								<td th:text="${professor.matricula}" class="text-center">201710450502</td>
+								<td class="text-center">
+									<a class="btn  btn-link  btn-xs  js-tooltip" title="Editar"
+										th:href="@{/professor/{id}(id=${professor.id})}">
+										<i class="glyphicon  glyphicon-pencil"></i>
+									</a>
+									<a class="btn  btn-link  btn-xs  js-tooltip  js-exclusao-btn" title="Excluir"
+										data:url="@{/professor/{id}(id=${professor.id})}" data:objeto="${professor.nome}">
+										<i class="glyphicon  glyphicon-remove"></i>
+									</a>
+								</td>
+							</tr>
+							<tr th:if="${#lists.isEmpty(professores)}">
+								<td colspan="3">Nenhum professor encontrado</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>

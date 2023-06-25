@@ -1,18 +1,22 @@
 package br.edu.ifce.tjwScholar.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.edu.ifce.tjwScholar.controller.validator.TurmaValidator;
 import br.edu.ifce.tjwScholar.exception.EstudanteMatriculaJaCadastradaException;
+import br.edu.ifce.tjwScholar.exception.ImpossivelExcluirEntidadeException;
 import br.edu.ifce.tjwScholar.model.Turma;
 import br.edu.ifce.tjwScholar.service.TurmaService;
 
@@ -60,5 +64,22 @@ public class TurmasController {
 		ModelAndView mv = cadastrar(turma);
 		mv.addObject(turma);
 		return mv;
+	}
+	
+	@GetMapping
+	public ModelAndView pesquisar() {
+		ModelAndView mv = new ModelAndView("turma/ListaTurmas");
+		mv.addObject("turmas", turmaService.buscarTodos());
+		return mv;
+	}
+	
+	@DeleteMapping("/{turma}")
+	public @ResponseBody ResponseEntity<?> excluir(Turma turma) {
+		try {
+			turmaService.excluir(turma);
+		} catch (ImpossivelExcluirEntidadeException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+		return ResponseEntity.ok().build();
 	}
 }
