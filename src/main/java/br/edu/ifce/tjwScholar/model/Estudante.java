@@ -1,5 +1,6 @@
 package br.edu.ifce.tjwScholar.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
@@ -12,17 +13,19 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "estudante")
-public class Estudante {
+public class Estudante implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank
+	@NotBlank(message = "Nome é um campo obrigatório")
 	private String nome;
 	
-	@NotBlank
-	@Size(min = 12, max = 12)
+	@NotBlank(message = "Matrícula é um campo obrigatório")
+	@Size(min = 12, max = 12, message = "Matrícula deve ter 12 dígitos")
 	private String matricula;
 
 	public Long getId() {

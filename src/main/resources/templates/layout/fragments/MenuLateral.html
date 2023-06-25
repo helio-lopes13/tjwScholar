@@ -13,59 +13,29 @@
 						<li class="aw-menu__item" scholar:menu="@{/}">
 							<a th:href="@{/}">
 								<i class="fa  fa-fw  fa-home"></i>
-								<span>Dashboard</span>
+								<span>Página Inicial</span>
 							</a>
 						</li>
 						
-						<li class="aw-menu__item">
-							<a href="#">
+						<li class="aw-menu__item" scholar:menu="@{/estudante.*}">
+							<a th:href="@{/estudante/cadastrar}">
 								<i class="fa  fa-fw  fa-credit-card"></i>
 								<span>Estudantes</span>
-								<i class="aw-menu__navigation-icon  fa"></i>
 							</a>
-							
-							<ul class="aw-menu__list  aw-menu__list--sublist">
-								<li class="aw-menu__item  aw-menu__item--link" scholar:menu="@{/estudante.*}">
-									<a th:href="@{/estudante}">Estudantes</a>
-								</li>
-							</ul>
 						</li>
 
-						<li class="aw-menu__item">
-							<a href="#">
+						<li class="aw-menu__item" scholar:menu="@{/professor.*}">
+							<a th:href="@{/professor/cadastrar}">
 								<i class="fa  fa-fw  fa-truck"></i>
-								<span>Estoque</span>
-								<i class="aw-menu__navigation-icon  fa"></i>
+								<span>Professores</span>
 							</a>
-
-							<ul class="aw-menu__list  aw-menu__list--sublist">
-								<li class="aw-menu__item  aw-menu__item--link" scholar:menu="@{/estilos.*}">
-									<a th:href="@{/estilos}">Estilos</a>
-								</li>
-								<li class="aw-menu__item  aw-menu__item--link" scholar:menu="@{/cervejas.*}">
-									<a th:href="@{/cervejas}">Cervejas</a>
-								</li>
-							</ul>
 						</li>
 
-						<li class="aw-menu__item">
-							<a href="#">
+						<li class="aw-menu__item" scholar:menu="@{/turma.*}">
+							<a th:href="@{/turma/cadastrar}">
 								<i class="fa  fa-fw  fa-database"></i>
-								<span>Cadastros</span>
-								<i class="aw-menu__navigation-icon  fa"></i>
+								<span>Turmas</span>
 							</a>
-
-							<ul class="aw-menu__list  aw-menu__list--sublist">
-								<li class="aw-menu__item  aw-menu__item--link" scholar:menu="@{/cidades.*}">
-									<a th:href="@{/cidades}">Cidades</a>
-								</li>
-								<li class="aw-menu__item  aw-menu__item--link" scholar:menu="@{/clientes.*}">
-									<a th:href="@{/clientes}">Clientes</a>
-								</li>
-								<li class="aw-menu__item  aw-menu__item--link" scholar:menu="@{/usuarios.*}">
-									<a th:href="@{/usuarios}">Usuários</a>
-								</li>
-							</ul>
 						</li>
 
 					</ul>

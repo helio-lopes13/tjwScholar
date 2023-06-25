@@ -5,7 +5,7 @@
 	layout:decorate="~{layout/LayoutPadrao}">
 	
 	<head>
-		<title th:text="${estudante.novu} ? 'Cadastro de estudante' : 'Edição de estudante'">Cadastro de estudante</title>
+		<title th:text="${professor.novu} ? 'Cadastro de professor' : 'Edição de professor'">Cadastro de professor</title>
 		
 		
 		<link rel="stylesheet" th:href="@{/stylesheets/vendors/upload.min.css}"/>
@@ -17,13 +17,13 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-xs-10">
-							<h1 th:if="${estudante.novu}">Cadastro de estudante</h1>
-							<h1 th:unless="${estudante.novu}" th:text="|Edição de estudante ${estudante.nome}|">Edição de estudante</h1>
+							<h1 th:if="${professor.novu}">Cadastro de professor</h1>
+							<h1 th:unless="${professor.novu}" th:text="|Edição de professor ${professor.nome}|">Edição de professor</h1>
 						</div>
 						
 						<div class="col-xs-2">
 							<div class="aw-page-header-controls">
-								<a class="btn  btn-default" th:href="@{/estudante}">
+								<a class="btn  btn-default" th:href="@{/professor}">
 									<i class="glyphicon  glyphicon-search"></i> <span class="hidden-xs  hidden-sm">Pesquisa</span>
 								</a>
 							</div>	
@@ -33,17 +33,18 @@
 			</div>
 
 			<div class="container-fluid">
-				<form method="POST" th:object="${estudante}"
-					th:action="${estudante.novu} ? @{/estudante/cadastrar} : @{/estudante/{id}(id=${estudante.id})}">
+				<form method="POST" th:object="${professor}"
+					th:action="${professor.novu} ? @{/professor/cadastrar} : @{/professor/{id}(id=${professor.id})}">
+					<scholar:message />
 					<input type="hidden" th:field="*{id}"/>
 
 					<div class="row">
-						<div class="col-sm-6  form-group  sc-required">
-							<label for="sku" class="control-label">SKU</label>
-							<input id="sku" type="text" class="form-control" th:field="*{matricula} "/>
+						<div class="col-sm-6  form-group  sc-required" scholar:classforerror="matricula">
+							<label for="matricula" class="control-label">Matrícula</label>
+							<input id="matricula" type="text" class="form-control  js-plain" th:field="*{matricula} "/>
 						</div>
 						
-						<div class="col-sm-6  form-group  sc-required">
+						<div class="col-sm-6  form-group  sc-required" scholar:classforerror="nome">
 							<label for="nome" class="control-label">Nome</label>
 							<input id="nome" type="text" class="form-control" th:field="*{nome}" />
 						</div>

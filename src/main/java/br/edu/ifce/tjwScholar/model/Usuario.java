@@ -1,17 +1,25 @@
 package br.edu.ifce.tjwScholar.model;
 
+import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 
-@Table
-@Entity(name = "usuario")
-public class Usuario {
+@Entity
+@Table(name = "usuario")
+public class Usuario implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -20,6 +28,12 @@ public class Usuario {
 	private String email;
 	
 	private String senha;
+
+	@ManyToMany
+	@JoinTable(name = "usuario_permissao",
+		joinColumns = @JoinColumn(name = "id_usuario"),
+		inverseJoinColumns = @JoinColumn(name = "id_permissao"))
+	private List<Permissao> permissoes;
 
 	public Long getId() {
 		return id;

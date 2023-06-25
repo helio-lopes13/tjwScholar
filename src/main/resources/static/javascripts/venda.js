@@ -1,4 +1,4 @@
-Brewer.Venda = (function() {
+Scholar.Venda = (function() {
 	
 	function Venda(tabelaItens) {
 		this.tabelaItens = tabelaItens;
@@ -29,17 +29,17 @@ Brewer.Venda = (function() {
 	}
 	
 	function onValorFreteAlterado(evento) {
-		this.valorFrete = Brewer.recuperarValor($(evento.target).val());
+		this.valorFrete = Scholar.recuperarValor($(evento.target).val());
 	}
 	
 	function onValorDescontoAlterado(evento) {
-		this.valorDesconto = Brewer.recuperarValor($(evento.target).val());
+		this.valorDesconto = Scholar.recuperarValor($(evento.target).val());
 	}
 	
 	function onValoresAlterados() {
 		var valorTotal = numeral(this.valorTotalItens) + numeral(this.valorFrete) - numeral(this.valorDesconto);
 		
-		this.boxValorTotalVenda.html(Brewer.formatarMoeda(valorTotal));
+		this.boxValorTotalVenda.html(Scholar.formatarMoeda(valorTotal));
 		
 		this.boxValorTotalContainer.toggleClass('erro', valorTotal < 0)
 	}
@@ -49,12 +49,12 @@ Brewer.Venda = (function() {
 }());
 
 $(function() {
-	var autocomplete = new Brewer.Autocomplete();
+	var autocomplete = new Scholar.Autocomplete();
 	autocomplete.iniciar();
 
-	var tabelaItens = new Brewer.TabelaItens(autocomplete);
+	var tabelaItens = new Scholar.TabelaItens(autocomplete);
 	tabelaItens.iniciar();
 	
-	var venda = new Brewer.Venda(tabelaItens);
+	var venda = new Scholar.Venda(tabelaItens);
 	venda.iniciar();
 });

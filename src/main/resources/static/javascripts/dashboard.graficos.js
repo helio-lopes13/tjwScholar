@@ -1,6 +1,6 @@
-var Brewer = Brewer || {};
+var Scholar = Scholar || {};
 
-Brewer.GraficoVendasPorMes = (function() {
+Scholar.GraficoVendasPorMes = (function() {
 	
 	function GraficoVendasPorMes() {
 		this.ctx = $('#graficoVendasPorMes')[0].getContext('2d');
@@ -42,7 +42,7 @@ Brewer.GraficoVendasPorMes = (function() {
 	
 }());
 
-Brewer.GraficoVendasPorOrigem = (function() {
+Scholar.GraficoVendasPorOrigem = (function() {
 	
 	function GraficoVendasPorOrigem() {
 		this.ctx = $('#graficoVendasPorOrigem')[0].getContext('2d');
@@ -89,9 +89,9 @@ Brewer.GraficoVendasPorOrigem = (function() {
 }());
 
 $(function() {
-	var graficoVendasPorMes = new Brewer.GraficoVendasPorMes();
+	var graficoVendasPorMes = new Scholar.GraficoVendasPorMes();
 	graficoVendasPorMes.iniciar();
 	
-	var graficoVendasPorOrigem = new Brewer.GraficoVendasPorOrigem();
+	var graficoVendasPorOrigem = new Scholar.GraficoVendasPorOrigem();
 	graficoVendasPorOrigem.iniciar();
 });

@@ -1,6 +1,6 @@
-var Brewer = Brewer || {};
+var Scholar = Scholar || {};
 
-Brewer.BotaoSubmit = (function() {
+Scholar.BotaoSubmit = (function() {
 	
 	function BotaoSubmit() {
 		this.submitBtn = $('.js-submit-btn');
@@ -29,6 +29,6 @@ Brewer.BotaoSubmit = (function() {
 }());
 
 $(function() {
-	var botaoSubmit = new Brewer.BotaoSubmit();
+	var botaoSubmit = new Scholar.BotaoSubmit();
 	botaoSubmit.iniciar();
 });

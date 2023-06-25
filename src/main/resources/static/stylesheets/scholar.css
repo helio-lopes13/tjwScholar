@@ -102,7 +102,7 @@
 }
 
 .table-cervejas-col-nome {
-	/* min-width: 200px; */
+	min-width: 200px;
 }
 
 .table-cervejas-col-estilo {

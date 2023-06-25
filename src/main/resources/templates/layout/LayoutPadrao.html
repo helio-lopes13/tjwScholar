@@ -7,7 +7,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
-		<title>Brewer</title>
+		<title>Scholar</title>
 		
 		<link rel="stylesheet" type="text/css"
 			th:href="@{/layout/stylesheets/vendors.min.css}" />
@@ -16,7 +16,7 @@
 		<link rel="stylesheet" type="text/css"
 			th:href="@{/layout/stylesheets/application.css}" />
 		<link rel="stylesheet" type="text/css"
-			th:href="@{/stylesheets/brewer.css}" />
+			th:href="@{/stylesheets/scholar.css}" />
 		<link rel="stylesheet" type="text/css"
 			th:href="@{/stylesheets/vendors/bootstrap-datepicker.standalone.min.css}" />
 		<link rel="shortcut icon"
@@ -24,8 +24,8 @@
 	</head>
 	
 	<body>
-		<!--<input name="_csrf" type="hidden" th:value="${_csrf.token}" />
-		<input name="_csrf_header" type="hidden" th:value="${_csrf.headerName}" /-->
+		<input name="_csrf" type="hidden" th:value="${_csrf.token}" />
+		<input name="_csrf_header" type="hidden" th:value="${_csrf.headerName}" />
 		
 		<div class="aw-layout-page">
 			<div th:replace="~{layout/fragments/BarraNavegacao :: navbar}"></div>
@@ -50,8 +50,8 @@
 		<script th:src="@{/javascripts/vendors/numeral.min.js}"></script>
 		<script th:src="@{/javascripts/vendors/pt-br.min.js}"></script>
 		
-		<script th:src="@{/javascripts/brewer.js}"></script>
-		<script th:src="@{/javascripts/brewer.dialogo-excluir.js}"></script>
+		<script th:src="@{/javascripts/scholar.js}"></script>
+		<script th:src="@{/javascripts/scholar.dialogo-excluir.js}"></script>
 		
 		<th:block layout:fragment="javascript-extra"></th:block>
 	</body>

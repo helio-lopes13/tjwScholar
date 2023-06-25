@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/LayoutPadrao}">
+	
+	<head>
+		<title th:text="${turma.nova} ? 'Cadastro de turma' : 'Edição de turma'">Cadastro de turma</title>
+		
+		
+		<link rel="stylesheet" th:href="@{/stylesheets/vendors/upload.min.css}"/>
+	</head>
+
+	<body>
+		<section layout:fragment="conteudo">
+			<div class="page-header">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-10">
+							<h1 th:if="${turma.nova}">Cadastro de turma</h1>
+							<h1 th:unless="${turma.nova}" th:text="|Edição de turma ${turma.nomeDisciplina}|">Edição de turma</h1>
+						</div>
+						
+						<div class="col-xs-2">
+							<div class="aw-page-header-controls">
+								<a class="btn  btn-default" th:href="@{/turma}">
+									<i class="glyphicon  glyphicon-search"></i> <span class="hidden-xs  hidden-sm">Pesquisa</span>
+								</a>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="container-fluid">
+				<form method="POST" th:object="${turma}"
+					th:action="${turma.nova} ? @{/turma/cadastrar} : @{/turma/{id}(id=${turma.id})}">
+					<scholar:message />
+					<input type="hidden" th:field="*{id}"/>
+
+					<div class="row">
+						<div class="col-sm-6  form-group  sc-required" scholar:classforerror="professor.id">
+							<label for="nomeProfessor" class="control-label">Professor</label>
+							<div class="input-group">
+								<input id="nomeProfessor" class="form-control" type="text" th:field="*{professor.nome}"
+									readonly="readonly" placeholder="Clique na lupa para pesquisar o professor" />
+								<input id="idProfessor" type="hidden" th:field="*{professor}" />
+								<span class="input-group-btn">
+									<button class="btn  btn-default  js-tooltip" type="button" title="Pesquisa avançada"
+										data-toggle="modal" data-target="#pesquisaRapidaProfessores">
+										<i class="glyphicon  glyphicon-search"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+						
+						<div class="col-sm-6  form-group  sc-required" scholar:classforerror="nomeDisciplina">
+							<label for="nomeDisciplina" class="control-label">Disciplina</label>
+							<input id="nomeDisciplina" type="text" class="form-control" th:field="*{nomeDisciplina} "/>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<button class="btn  btn-primary" type="submit">Salvar</button>
+					</div>
+				</form>
+			</div>
+			
+			<th:block th:replace="professor/PesquisaRapidaProfessores :: pesquisaRapidaProfessores"></th:block>
+		</section>
+		
+		<th:block layout:fragment="javascript-extra">
+			<script th:src="@{/javascripts/vendors/handlebars.min.js}"></script>
+			<script th:src="@{/javascripts/professor.pesquisa-rapida.js}"></script>
+		</th:block>
+	</body>
+</html>

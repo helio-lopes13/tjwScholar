@@ -1,6 +1,6 @@
-var Brewer = Brewer || {};
+var Scholar = Scholar || {};
 
-Brewer.DialogoExcluir = (function() {
+Scholar.DialogoExcluir = (function() {
 	
 	function DialogoExcluir() {
 		this.exclusaoBtn = $('.js-exclusao-btn');
@@ -55,6 +55,6 @@ Brewer.DialogoExcluir = (function() {
 }());
 
 $(function() {
-	var dialogo = new Brewer.DialogoExcluir();
+	var dialogo = new Scholar.DialogoExcluir();
 	dialogo.iniciar();
 });

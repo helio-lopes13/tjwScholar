@@ -1,6 +1,6 @@
-var Brewer = Brewer || {};
+var Scholar = Scholar || {};
 
-Brewer.MascaraCpfCnpj = (function() {
+Scholar.MascaraCpfCnpj = (function() {
 	function MascaraCpfCnpj() {
 		this.radioTipoPessoa = $('.js-radio-tipo-pessoa');
 		this.labelCpfCnpj = $('[for=cpfOuCnpj]');
@@ -31,6 +31,6 @@ Brewer.MascaraCpfCnpj = (function() {
 }());
 
 $(function() {
-	var mascaraCpfCnpj = new Brewer.MascaraCpfCnpj();
+	var mascaraCpfCnpj = new Scholar.MascaraCpfCnpj();
 	mascaraCpfCnpj.iniciar();
 });

@@ -1,6 +1,6 @@
-var Brewer = Brewer || {};
+var Scholar = Scholar || {};
 
-Brewer.MultiSelecao = (function() {
+Scholar.MultiSelecao = (function() {
 	function MultiSelecao() {
 		this.statusBtn = $('.js-status-btn');
 		this.selecaoCheckbox = $('.js-selecao');
@@ -63,6 +63,6 @@ Brewer.MultiSelecao = (function() {
 }());
 
 $(function() {
-	var multiselecao = new Brewer.MultiSelecao();
+	var multiselecao = new Scholar.MultiSelecao();
 	multiselecao.iniciar();
 });

@@ -1,6 +1,6 @@
-var Brewer = Brewer || {};
+var Scholar = Scholar || {};
 
-Brewer.ComboEstado = (function() {
+Scholar.ComboEstado = (function() {
 	function ComboEstado() {
 		this.combo = $('#estado');
 		this.emitter = $({});
@@ -18,7 +18,7 @@ Brewer.ComboEstado = (function() {
 	return ComboEstado;
 }());
 
-Brewer.ComboCidade = (function() {
+Scholar.ComboCidade = (function() {
 	function ComboCidade(comboEstado) {
 		this.comboEstado = comboEstado;
 		this.combo = $('#cidade');
@@ -88,9 +88,9 @@ Brewer.ComboCidade = (function() {
 }());
 
 $(function() {
-	var comboEstado = new Brewer.ComboEstado();
+	var comboEstado = new Scholar.ComboEstado();
 	comboEstado.iniciar();
 	
-	var comboCidade = new Brewer.ComboCidade(comboEstado);
+	var comboCidade = new Scholar.ComboCidade(comboEstado);
 	comboCidade.iniciar();
 });

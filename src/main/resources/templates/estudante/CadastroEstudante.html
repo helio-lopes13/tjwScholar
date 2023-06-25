@@ -2,6 +2,7 @@
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:scholar="http://www.scholar.edu.br"
 	layout:decorate="~{layout/LayoutPadrao}">
 	
 	<head>
@@ -35,15 +36,16 @@
 			<div class="container-fluid">
 				<form method="POST" th:object="${estudante}"
 					th:action="${estudante.novu} ? @{/estudante/cadastrar} : @{/estudante/{id}(id=${estudante.id})}">
+					<scholar:message />
 					<input type="hidden" th:field="*{id}"/>
 
 					<div class="row">
-						<div class="col-sm-6  form-group  sc-required">
-							<label for="sku" class="control-label">SKU</label>
-							<input id="sku" type="text" class="form-control" th:field="*{matricula} "/>
+						<div class="col-sm-6  form-group  sc-required" scholar:classforerror="matricula">
+							<label for="matricula" class="control-label">Matrícula</label>
+							<input id="matricula" type="text" class="form-control  js-plain" th:field="*{matricula} "/>
 						</div>
 						
-						<div class="col-sm-6  form-group  sc-required">
+						<div class="col-sm-6  form-group  sc-required" scholar:classforerror="nome">
 							<label for="nome" class="control-label">Nome</label>
 							<input id="nome" type="text" class="form-control" th:field="*{nome}" />
 						</div>

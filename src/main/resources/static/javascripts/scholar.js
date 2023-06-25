@@ -1,6 +1,6 @@
-var Brewer = Brewer || {};
+var Scholar = Scholar || {};
 
-Brewer.MaskMoney = (function() {
+Scholar.MaskMoney = (function() {
 	
 	function MaskMoney() {
 		this.decimal = $('.js-decimal');
@@ -11,13 +11,13 @@ Brewer.MaskMoney = (function() {
 //		this.decimal.maskMoney({ decimal: ',', thousands: '.' });
 //		this.plain.maskMoney({ precision: 0, thousands: '.' });
 		this.decimal.maskNumber({ decimal: ',', thousands: '.' });
-		this.plain.maskNumber({ integer: true, thousands: '.' });
+		this.plain.maskNumber({ integer: true, decimal: '', thousands: '' });
 	}
 	
 	return MaskMoney;
 }());
 
-Brewer.MaskPhoneNumber = (function () {
+Scholar.MaskPhoneNumber = (function () {
 	
 	function MaskPhoneNumber() {
 		this.inputPhoneNumber = $('.js-phone-number');
@@ -40,7 +40,7 @@ Brewer.MaskPhoneNumber = (function () {
 	return MaskPhoneNumber;
 }());
 
-Brewer.MaskCep = (function() {
+Scholar.MaskCep = (function() {
 	
 	function MaskCep() {
 		this.inputCep = $('.js-cep');
@@ -54,7 +54,7 @@ Brewer.MaskCep = (function() {
 	
 }());
 
-Brewer.MaskDate = (function() {
+Scholar.MaskDate = (function() {
 	
 	function MaskDate() {
 		this.inputDate = $('.js-date');
@@ -73,7 +73,7 @@ Brewer.MaskDate = (function() {
 	
 }());
 
-Brewer.Security = (function() {
+Scholar.Security = (function() {
 	
 	function Security() {
 		this.token = $('input[name=_csrf]').val();
@@ -92,27 +92,27 @@ Brewer.Security = (function() {
 
 numeral.language('pt-br');
 
-Brewer.formatarMoeda = function(valor) {
+Scholar.formatarMoeda = function(valor) {
 	return numeral(valor).format('0,0.00');
 }
 
-Brewer.recuperarValor = function(valorFormatado) {
+Scholar.recuperarValor = function(valorFormatado) {
 	return numeral().unformat(valorFormatado);
 }
 
 $(function() {
-	var maskMoney = new Brewer.MaskMoney();
+	var maskMoney = new Scholar.MaskMoney();
 	maskMoney.enable();
 	
-	var maskPhoneNumber = new Brewer.MaskPhoneNumber();
+	var maskPhoneNumber = new Scholar.MaskPhoneNumber();
 	maskPhoneNumber.enable();
 
-	var maskCep = new Brewer.MaskCep();
+	var maskCep = new Scholar.MaskCep();
 	maskCep.enable();
 	
-	var maskDate = new Brewer.MaskDate();
+	var maskDate = new Scholar.MaskDate();
 	maskDate.enable();
 	
-	var security = new Brewer.Security();
+	var security = new Scholar.Security();
 	security.enable();
 });

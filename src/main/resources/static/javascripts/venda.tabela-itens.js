@@ -1,4 +1,4 @@
-Brewer.TabelaItens = (function() {
+Scholar.TabelaItens = (function() {
 
 	function TabelaItens(autocomplete) {
 		this.autocomplete = autocomplete;

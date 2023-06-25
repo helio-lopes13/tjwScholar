@@ -1,6 +1,6 @@
-var Brewer = Brewer || {};
+var Scholar = Scholar || {};
 
-Brewer.Autocomplete = (function() {
+Scholar.Autocomplete = (function() {
 	
 	function Autocomplete() {
 		this.inputSkuOuNome = $('.js-sku-nome-cerveja-input');
@@ -34,7 +34,7 @@ Brewer.Autocomplete = (function() {
 	}
 	
 	function template(nome, cerveja) {
-		cerveja.valorFormatado = Brewer.formatarMoeda(cerveja.valor);
+		cerveja.valorFormatado = Scholar.formatarMoeda(cerveja.valor);
 		return this.template(cerveja);
 	}
 	

@@ -1,6 +1,6 @@
-var Brewer = Brewer || {};
+var Scholar = Scholar || {};
 
-Brewer.EstiloCadastroRapido = (function() {
+Scholar.EstiloCadastroRapido = (function() {
 	function EstiloCadastroRapido() {
 		this.modal = $('#modalCadastroRapidoEstilo');
 		this.botaoSalvar = this.modal.find('.js-modal-cadastro-estilo-salvar-btn');
@@ -58,6 +58,6 @@ Brewer.EstiloCadastroRapido = (function() {
 }());
 
 $(function() {
-	var estiloCadastroRapido = new Brewer.EstiloCadastroRapido();
+	var estiloCadastroRapido = new Scholar.EstiloCadastroRapido();
 	estiloCadastroRapido.iniciar();
 });
